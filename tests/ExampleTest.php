@@ -2,13 +2,16 @@
 
 namespace League\Skeleton;
 
-class ExampleTest extends \PHPUnit_Framework_TestCase
+class ExampleTest extends TestCase
 {
     /**
-     * Test that true does in fact equal true
+     * Test settings route is installed.
+     *
+     * @return void
      */
-    public function testTrueIsTrue()
+    public function testSettingsRouteIsInstalled()
     {
-        $this->assertTrue(true);
+        $this->visit('/settings')
+            ->see('Settings');
     }
 }
