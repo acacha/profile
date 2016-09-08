@@ -6,6 +6,6 @@
  * RouteServiceProvider
  */
 
-Route::group(['middleware' => 'web','namespace' => 'Acacha\Profile\Http\Controllers'], function () {
+Route::group(['middleware' => 'web','namespace' => '\Acacha\Profile\Http\Controllers'], function () {
     Route::get('/settings', 'SettingsController@index');
 });

@@ -11,7 +11,7 @@ class ProfileTest extends TestCase
      */
     public function testSettingsRouteIsInstalled()
     {
-        $this->visitRoute('settings');
+        $this->visitRoute('settings')->assertResponseOk();
 //            ->see('Settings');
     }
 }
