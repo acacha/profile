@@ -5,6 +5,7 @@ namespace Acacha\Profile\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\AppNamespaceDetectorTrait;
 
+use Acacha\Profile\Facades\Profile;
 
 /**
  * Class ProfileServiceProvider.
