@@ -3,5 +3,5 @@
 cd sandbox
 phpunit
 cd ..
-./sandbox_destroy.sh
+#./sandbox_destroy.sh
 

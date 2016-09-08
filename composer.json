@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Acacha\\profile\\": "src"
+            "Acacha\\Profile\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Acacha\\profile\\": "tests"
+            "Acacha\\Profile\\": "tests"
         }
     },
     "scripts": {
