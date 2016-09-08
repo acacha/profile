@@ -29,7 +29,7 @@ class ProfileServiceProvider extends ServiceProvider
             define('ACACHA_PROFILE_PATH', realpath(__DIR__.'/../../'));
         }
 
-        $this->app->bind('AdminLTE', function () {
+        $this->app->bind('Profile', function () {
             return new \Acacha\Profile\Profile();
         });
     }
@@ -64,7 +64,7 @@ class ProfileServiceProvider extends ServiceProvider
      */
     private function publishTests()
     {
-        $this->publishes(AdminLTE::tests(), 'acacha-profile');
+        $this->publishes(Profile::tests(), 'acacha-profile');
     }
 
 }
