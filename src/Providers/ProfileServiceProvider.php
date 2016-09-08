@@ -54,7 +54,7 @@ class ProfileServiceProvider extends ServiceProvider
         if (!$this->app->routesAreCached()) {
             $router = app('router');
 
-            $router->group(['namespace' => $this->getAppNamespace().'Http\Controllers'], function () {
+            $router->group(['namespace' => 'Acacha\Profile\Http\Controllers'], function () {
                 require __DIR__.'/../routes/web.php';
             });
         }
