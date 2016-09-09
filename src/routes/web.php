@@ -2,6 +2,7 @@
 
 /*
  * Acacha/profile routes
+ *
  * Take into account we have to add 'web' middleware group here because Laravel by defaults add this middleware in
  * RouteServiceProvider
  */

@@ -44,6 +44,11 @@ class ProfileServiceProvider extends ServiceProvider
     {
         $this->defineRoutes();
         $this->publishTests();
+        $this->publishPublicAssets();
+        $this->publishViews();
+        $this->publishResourceAssets();
+        $this->publishLanguages();
+        $this->loadMigrations();
     }
 
     /**
@@ -66,6 +71,52 @@ class ProfileServiceProvider extends ServiceProvider
     private function publishTests()
     {
         $this->publishes(Profile::tests(), 'acacha-profile');
+    }
+
+    /**
+     * Publish public resource assets to Laravel project.
+     */
+    private function publishPublicAssets()
+    {
+        $this->publishes(Profile::publicAssets(), 'adminlte');
+    }
+
+    /**
+     * Publish package views to Laravel project.
+     */
+    private function publishViews()
+    {
+        $this->loadViewsFrom(ACACHA_PROFILE_PATH.'/resources/views/', 'adminlte');
+
+        $this->publishes(Profile::views(), 'adminlte');
+    }
+
+    /**
+     * Publish package resource assets to Laravel project.
+     */
+    private function publishResourceAssets()
+    {
+        $this->publishes(Profile::resourceAssets(), 'acacha-profile');
+    }
+
+    /**
+     * Publish package language to Laravel project.
+     */
+    private function publishLanguages()
+    {
+        $this->loadTranslationsFrom(ACACHA_PROFILE_PATH.'/resources/lang/', 'acacha-profile_lang');
+
+        $this->publishes([
+            ACACHA_PROFILE_PATH.'/resources/lang/' => resource_path('lang/vendor/acacha-profile_lang'),
+        ]);
+    }
+
+    /**
+     * Publish package language to Laravel project.
+     */
+    private function loadMigrations()
+    {
+        $this->loadMigrationsFrom(ACACHA_PROFILE_PATH.'/migrations');
     }
 
 }

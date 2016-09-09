@@ -20,4 +20,27 @@ class Profile
         ];
     }
 
+    /**
+     * Views copy path.
+     *
+     * @return array
+     */
+    public function views()
+    {
+        return [
+            ACACHA_PROFILE_PATH.'/resources/views/profile'              => base_path('resources/views/profile'),
+        ];
+    }
+
+    /**
+     * Resource assets copy path.
+     *
+     * @return array
+     */
+    public function resourceAssets()
+    {
+        return [
+            ACACHA_PROFILE_PATH.'/resources/assets/less' => base_path('resources/assets/less')
+        ];
+    }
 }
