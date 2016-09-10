@@ -43,4 +43,16 @@ class Profile
             ACACHA_PROFILE_PATH.'/resources/assets/less' => base_path('resources/assets/less')
         ];
     }
+
+    /**
+     * Public assets copy path.
+     *
+     * @return array
+     */
+    public function publicAssets()
+    {
+        return [
+            ACACHA_PROFILE_PATH.'/public/img'     => public_path('img'),
+        ];
+    }
 }
