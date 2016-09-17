@@ -78,7 +78,7 @@ class ProfileServiceProvider extends ServiceProvider
      */
     private function publishPublicAssets()
     {
-        $this->publishes(Profile::publicAssets(), 'adminlte');
+        $this->publishes(Profile::publicAssets(), 'acacha-profile');
     }
 
     /**
@@ -86,9 +86,9 @@ class ProfileServiceProvider extends ServiceProvider
      */
     private function publishViews()
     {
-        $this->loadViewsFrom(ACACHA_PROFILE_PATH.'/resources/views/', 'adminlte');
+        $this->loadViewsFrom(ACACHA_PROFILE_PATH.'/resources/views/', 'acacha-profile');
 
-        $this->publishes(Profile::views(), 'adminlte');
+        $this->publishes(Profile::views(), 'acacha-profile');
     }
 
     /**

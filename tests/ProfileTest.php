@@ -1,9 +1,22 @@
 <?php
 
-namespace League\Skeleton;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileTest extends TestCase
 {
+
+    use DatabaseMigrations;
+
+    /**
+     * Set up tests
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        App::setLocale('en');
+    }
+
     /**
      * Test settings route is installed.
      *
@@ -11,7 +24,20 @@ class ProfileTest extends TestCase
      */
     public function testSettingsRouteIsInstalled()
     {
-        $this->visitRoute('settings')->assertResponseOk();
-//            ->see('Settings');
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+             ->visitRoute('profile')->assertResponseOk()
+             ->see('Settings');
+    }
+
+    /**
+     * Test settings route is only visitable by authenticated users.
+     *
+     * @return void
+     */
+    public function testSettingsRouteIsOnlyVisitableByAuthenticatedUsers()
+    {
+        $this->visitRoute('profile')->see('login');
     }
 }

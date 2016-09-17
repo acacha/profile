@@ -8,5 +8,5 @@
  */
 
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/settings', 'SettingsController@index');
+    Route::get('/settings', 'SettingsController@index')->name('profile');;
 });

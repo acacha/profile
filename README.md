@@ -25,6 +25,10 @@ $skeleton = new League\Skeleton();
 echo $skeleton->echoPhrase('Hello, League!');
 ```
 
+```
+php artisan vendor:publish --tag=acacha-profile --force 
+```
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
