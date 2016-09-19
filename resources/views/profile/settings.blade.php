@@ -24,7 +24,7 @@
 
                     <p class="text-muted text-center">{{ $user->email or "" }}</p>
 
-                    <p class="text-muted text-center">{{ trans('acacha-profile_lang::message.membersince') }} {{ $user->created_at->diffForHumans()}}</p>
+                    <p class="text-muted text-center">{{ trans('acacha-profile_lang::message.membersince') }} {{ lcfirst($user->created_at->diffForHumans())}}</p>
 
                     @if ( config('profile.showSocialNetworkData'))
                         <ul class="list-group list-group-unbordered">
