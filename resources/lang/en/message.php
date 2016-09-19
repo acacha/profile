@@ -15,5 +15,20 @@ return [
 
     'settings'                => 'Settings',
     'profile'                 => 'Profile',
+    'followers'               => 'Followers',
+    'following'               => 'Following',
+    'friends'                 => 'Friends',
+    'aboutme'                 => 'About me',
+    'education'               => 'Education',
+    'location'                => 'Location',
+    'skills'                  => 'Skills',
+    'notes'                   => 'Notes',
+
+    'personaldata'            => 'Personal data',
+    'security'                => 'Security',
+    'settingsmenu'            => 'Settings',
+    'timeline'                => 'Timeline',
+    'activity'                => 'Activity',
+
 
 ];

@@ -15,5 +15,8 @@ return [
 
     'settings'                => 'Configuración',
     'someproblems'            => 'There were some problems with your input.',
+    'followers'               => 'Seguidores',
+    'following'               => 'Siguiendo',
+    'friends'                 => 'Amistades',
 
 ];

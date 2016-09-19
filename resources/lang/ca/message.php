@@ -15,5 +15,19 @@ return [
 
     'settings'                => 'Configuració',
     'profile'                 => 'Perfil',
+    'followers'               => 'Seguidors',
+    'following'               => 'Seguint',
+    'friends'                 => 'Amics',
+    'aboutme'                 => 'Sobre mi',
+    'education'               => 'Educació',
+    'location'                => 'Adreça',
+    'skills'                  => 'Abilitats',
+    'notes'                   => 'Notes',
+
+    'personaldata'            => 'Dades personals',
+    'security'                => 'Seguretat',
+    'settingsmenu'            => 'Configuració',
+    'timeline'                => 'Timeline',
+    'activity'                => 'Activitat',
     
 ];

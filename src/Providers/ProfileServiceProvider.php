@@ -33,6 +33,10 @@ class ProfileServiceProvider extends ServiceProvider
         $this->app->bind('Profile', function () {
             return new \Acacha\Profile\Profile();
         });
+
+        $this->mergeConfigFrom(
+            ACACHA_PROFILE_PATH.'/config/profile.php', 'acacha-profile'
+        );
     }
 
     /**
@@ -49,6 +53,7 @@ class ProfileServiceProvider extends ServiceProvider
         $this->publishResourceAssets();
         $this->publishLanguages();
         $this->loadMigrations();
+        $this->publishConfigFile();
     }
 
     /**
@@ -117,6 +122,16 @@ class ProfileServiceProvider extends ServiceProvider
     private function loadMigrations()
     {
         $this->loadMigrationsFrom(ACACHA_PROFILE_PATH.'/migrations');
+    }
+
+    /**
+     * Publish config file to Laravel project.
+     */
+    private function publishConfigFile()
+    {
+        $this->publishes([
+            ACACHA_PROFILE_PATH.'/config/courier.php' => config_path('profile.php'),
+        ]);
     }
 
 }

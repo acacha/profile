@@ -15,54 +15,64 @@
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{ Gravatar::get($user->email) }}" alt="User profile picture">
+                    <img class="profile-user-img img-responsive img-circle"
+                         src="{{ Gravatar::get($user->email) }}" alt="User profile picture">
 
                     <h3 class="profile-username text-center">{{ $user->name }}</h3>
 
-                    <p class="text-muted text-center">Software Engineer</p>
+                    <p class="text-muted text-center">{{ $user->position }}</p>
 
-                    <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                            <b>Followers</b> <a class="pull-right">1,322</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Following</b> <a class="pull-right">543</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Friends</b> <a class="pull-right">13,287</a>
-                        </li>
-                    </ul>
+                    @if ( config('profile.showSocialNetworkData'))
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>{{ trans('acacha-profile_lang::message.followers') }}</b>
+                                <a class="pull-right">{{ $user->social->followers or 0}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>{{ trans('acacha-profile_lang::message.following') }}</b>
+                                <a class="pull-right">{{ $user->social->following or 0}}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>{{ trans('acacha-profile_lang::message.friends') }}</b>
+                                <a class="pull-right">{{ $user->social->friends or 0}}</a>
+                            </li>
+                        </ul>
 
-                    <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                    @endif
+
+
                 </div>
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
 
             <!-- About Me Box -->
-            <div class="box box-primary">
+            @if ( config('profile.showAboutMe'))
+                <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">About Me</h3>
+                    <h3 class="box-title">{{ trans('acacha-profile_lang::message.aboutme') }}</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+                    <strong><i class="fa fa-book margin-r-5"></i> {{ trans('acacha-profile_lang::message.education') }}</strong>
 
                     <p class="text-muted">
-                        B.S. in Computer Science from the University of Tennessee at Knoxville
+                        {{ $user->personal->education or ""}}
                     </p>
 
                     <hr>
 
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> {{ trans('acacha-profile_lang::message.location') }}</strong>
 
-                    <p class="text-muted">Malibu, California</p>
+                    <p class="text-muted">{{ $user->personal->address or ""}}</p>
 
                     <hr>
 
-                    <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+                    <strong><i class="fa fa-pencil margin-r-5"></i> {{ trans('acacha-profile_lang::message.skills') }}</strong>
 
                     <p>
+                        <!-- TODO -->
                         <span class="label label-danger">UI Design</span>
                         <span class="label label-success">Coding</span>
                         <span class="label label-info">Javascript</span>
@@ -72,24 +82,169 @@
 
                     <hr>
 
-                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> {{ trans('acacha-profile_lang::message.notes') }}</strong>
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                    <p>{{ $user->personal->notes or ""}}</p>
                 </div>
                 <!-- /.box-body -->
             </div>
+            @endif
             <!-- /.box -->
         </div>
         <!-- /.col -->
         <div class="col-md-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true">Settings</a></li>
-                    <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">Timeline</a></li>
-                    <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">Settings</a></li>
+                    <li class="active"><a href="#personaldata" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.personaldata') }}</a></li>
+                    <li class=""><a href="#security" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.security') }}</a></li>
+                    <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.settingsmenu') }}</a></li>
+
+                    @if ( config('profile.showTimeline'))
+                        <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.timeline') }}</a></li>
+                    @endif
+                    @if ( config('profile.showActivity'))
+                        <li class=""><a href="#activity" data-toggle="tab" aria-expanded="true">{{ trans('acacha-profile_lang::message.activity') }}</a></li>
+                    @endif
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="activity">
+                    <div class="tab-pane active" id="personaldata">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="security">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Current password</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Password</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Confirm password</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    @if ( config('profile.showActivity'))
+                        <div class="tab-pane" id="activity">
                         <!-- Post -->
                         <div class="post">
                             <div class="user-block">
@@ -203,8 +358,9 @@
                         </div>
                         <!-- /.post -->
                     </div>
-                    <!-- /.tab-pane -->
-                    <div class="tab-pane" id="timeline">
+                    @endif
+                    @if ( config('profile.showTimeline'))
+                        <div class="tab-pane" id="timeline">
                         <!-- The timeline -->
                         <ul class="timeline timeline-inverse">
                             <!-- timeline time label -->
@@ -298,61 +454,10 @@
                             </li>
                         </ul>
                     </div>
+                    @endif
                     <!-- /.tab-pane -->
 
-                    <div class="tab-pane" id="settings">
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">Name</label>
 
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
