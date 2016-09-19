@@ -18,6 +18,7 @@ return [
     'followers'               => 'Seguidors',
     'following'               => 'Seguint',
     'friends'                 => 'Amics',
+    'follow'                  => 'Seguir',
     'aboutme'                 => 'Sobre mi',
     'education'               => 'Educació',
     'location'                => 'Adreça',
@@ -29,5 +30,7 @@ return [
     'settingsmenu'            => 'Configuració',
     'timeline'                => 'Timeline',
     'activity'                => 'Activitat',
+
+    'membersince'             => 'Membre desde',
     
 ];

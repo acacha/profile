@@ -18,6 +18,7 @@ return [
     'followers'               => 'Followers',
     'following'               => 'Following',
     'friends'                 => 'Friends',
+    'follow'                  => 'Follow',
     'aboutme'                 => 'About me',
     'education'               => 'Education',
     'location'                => 'Location',
@@ -29,6 +30,10 @@ return [
     'settingsmenu'            => 'Settings',
     'timeline'                => 'Timeline',
     'activity'                => 'Activity',
+
+    'membersince'             => 'Member since',
+
+
 
 
 ];
