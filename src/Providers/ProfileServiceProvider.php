@@ -2,6 +2,7 @@
 
 namespace Acacha\Profile\Providers;
 
+use Acacha\Contact\Providers\ContactServiceProvider;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Console\AppNamespaceDetectorTrait;
 
@@ -37,6 +38,8 @@ class ProfileServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             ACACHA_PROFILE_PATH.'/config/profile.php', 'acacha-profile'
         );
+
+        $this->app->register(ContactServiceProvider::class);
     }
 
     /**
