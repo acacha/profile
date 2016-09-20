@@ -101,6 +101,7 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#personaldata" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.personaldata') }}</a></li>
                     <li class=""><a href="#security" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.security') }}</a></li>
+                    <li class=""><a href="#curriculum" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.curriculum') }}</a></li>
                     <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">{{ trans('acacha-profile_lang::message.settingsmenu') }}</a></li>
 
                     @if ( config('profile.showTimeline'))
@@ -114,52 +115,116 @@
                     <div class="tab-pane active" id="personaldata">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                <label for="inputName" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.fullname') }}</label>
 
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                    {{ $user->name }}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                                <label for="inputEmail" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.email') }}</label>
 
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                    {{ $user->email }}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                <label for="inputName" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.firstname') }}</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                                    {{ $user->contact()->firstname or '' }}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                                <label for="inputName" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.middlename') }}</label>
 
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                    {{ $user->contact()->middlename or '' }}
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                                <label for="inputName" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.lastname') }}</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                                    {{ $user->contact()->lastname or '' }}
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.address') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->address or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.postalcode') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->postalcode or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputCity" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.city') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->city or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPhoneNumber" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.phonenumber') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->phonenumber or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputMobile" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.mobile') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->mobile or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.email') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->email or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputDateofbirth" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.dateofbirth') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->dateofbirth or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputGender" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.gender') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->gender or '' }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputMaritalStatus" class="col-sm-2 control-label">{{ trans('acacha-profile_lang::message.maritalstatus') }}</label>
+
+                                <div class="col-sm-10">
+                                    {{ $user->contact()->maritalstatus or '' }}
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                    <button type="submit" class="btn btn-danger">{{ trans('acacha-profile_lang::message.submit') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -170,7 +235,7 @@
                                 <label for="inputName" class="col-sm-2 control-label">Current password</label>
 
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                    <input type="email" class="form-control" id="inputName" placeholder="Em">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -185,6 +250,29 @@
 
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane" id="curriculum">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -217,13 +305,7 @@
                                     <input type="text" class="form-control" id="inputName" placeholder="Name">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
 
-                                <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
 

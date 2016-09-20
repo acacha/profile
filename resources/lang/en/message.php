@@ -27,13 +27,27 @@ return [
 
     'personaldata'            => 'Personal data',
     'security'                => 'Security',
+    'curriculum'              => 'Curriculum',
     'settingsmenu'            => 'Settings',
     'timeline'                => 'Timeline',
     'activity'                => 'Activity',
 
     'membersince'             => 'Member since',
 
+    'fullname'                => 'Full name',
+    'firstname'               => 'Firt name',
+    'middlename'              => 'Middle name',
+    'lastname'                => 'Last name',
+    'email'                   => 'Email',
+    'address'                 => 'Address',
+    'postalcode'              => 'Postal code',
+    'city'                    => 'City',
+    'phonenumber'             => 'Phone number',
+    'mobile'                  => 'Mobile',
+    'dateofbirth'             => 'Date of birth',
+    'gender'                  => 'Gender',
+    'maritalstatus'           => 'Marital status',
 
-
+    'submit'                  => 'Submit',
 
 ];

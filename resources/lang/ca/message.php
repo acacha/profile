@@ -27,10 +27,27 @@ return [
 
     'personaldata'            => 'Dades personals',
     'security'                => 'Seguretat',
+    'curriculum'              => 'Currículum',
     'settingsmenu'            => 'Configuració',
     'timeline'                => 'Timeline',
     'activity'                => 'Activitat',
 
     'membersince'             => 'Membre desde',
+
+    'fullname'                => 'Nom complet',
+    'firstname'               => 'Nom',
+    'middlename'              => 'Primer cognom',
+    'lastname'                => 'Segon cognom',
+    'email'                   => 'Correu electrònic',
+    'address'                 => 'Adreça',
+    'postalcode'              => 'Codi postal',
+    'city'                    => 'Ciutat',
+    'phonenumber'             => 'Telèfon',
+    'mobile'                  => 'Mòbil',
+    'dateofbirth'             => 'Data de naixement',
+    'gender'                  => 'Sexe',
+    'maritalstatus'           => 'Estat civil',
+
+    'submit'                  => 'Enviar',
     
 ];
