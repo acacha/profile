@@ -27,6 +27,7 @@ return [
 
     'personaldata'            => 'Personal data',
     'security'                => 'Security',
+    'api'                     => 'API',
     'curriculum'              => 'Curriculum',
     'settingsmenu'            => 'Settings',
     'timeline'                => 'Timeline',
@@ -34,6 +35,7 @@ return [
 
     'membersince'             => 'Member since',
 
+    'usernameEmail'           => 'Username/email',
     'fullname'                => 'Full name',
     'firstname'               => 'Firt name',
     'middlename'              => 'Middle name',
@@ -49,5 +51,7 @@ return [
     'maritalstatus'           => 'Marital status',
 
     'submit'                  => 'Submit',
+
+    'OAuthClients'            => 'OAuth Clients',
 
 ];

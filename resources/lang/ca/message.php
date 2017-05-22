@@ -22,11 +22,12 @@ return [
     'aboutme'                 => 'Sobre mi',
     'education'               => 'Educació',
     'location'                => 'Adreça',
-    'skills'                  => 'Abilitats',
+    'skills'                  => 'Habilitats',
     'notes'                   => 'Notes',
 
     'personaldata'            => 'Dades personals',
     'security'                => 'Seguretat',
+    'api'                     => 'API',
     'curriculum'              => 'Currículum',
     'settingsmenu'            => 'Configuració',
     'timeline'                => 'Timeline',
@@ -34,6 +35,7 @@ return [
 
     'membersince'             => 'Membre desde',
 
+    'usernameEmail'           => 'Usuari/email',
     'fullname'                => 'Nom complet',
     'firstname'               => 'Nom',
     'middlename'              => 'Primer cognom',
